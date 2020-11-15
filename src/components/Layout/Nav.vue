@@ -25,7 +25,7 @@ export default {
     menuLinks() {
       let menuLinks = [
         {
-          icon: "mdi-train",
+          icon: "mdi-home",
           title: "Home",
           link: "/",
         },
@@ -33,6 +33,11 @@ export default {
           icon: "mdi-account",
           title: "Dashboard",
           link: "/dashboard",
+        },
+        {
+          icon: "mdi-notebook",
+          title: "Previous",
+          link: "/previous",
         },
       ];
       return menuLinks;
