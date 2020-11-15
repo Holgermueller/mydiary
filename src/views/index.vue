@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <h1>This is the home page.</h1>
+  <div id="home">
+    <v-card class="home">
+      <v-card-header>
+        login and reg will go here.
+      </v-card-header>
+    </v-card>
   </div>
 </template>
 
@@ -11,3 +15,10 @@ export default {
   components: {},
 };
 </script>
+
+<style scoped>
+.home {
+  width: 55%;
+  margin: 10% auto;
+}
+</style>
