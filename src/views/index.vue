@@ -1,18 +1,18 @@
 <template>
   <div id="home">
-    <v-card class="home">
-      <v-card-header>
-        login and reg will go here.
-      </v-card-header>
-    </v-card>
+    <LoginRegistration />
   </div>
 </template>
 
 <script>
+import LoginRegistration from "../components/LoginRegistration/LoginRegistrationTabs";
+
 export default {
   name: "Home",
 
-  components: {},
+  components: {
+    LoginRegistration,
+  },
 };
 </script>
 
