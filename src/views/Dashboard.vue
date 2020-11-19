@@ -17,7 +17,7 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn>
+        <v-btn @click.prevent="submitEntry">
           Submit
         </v-btn>
       </v-card-actions>
@@ -37,6 +37,22 @@ export default {
   },
 
   components: {},
+
+  methods: {
+    submitEntry() {
+      let entry = {
+        title: this.title,
+        todaysThoughts: this.todaysThoughts,
+      };
+
+      console.log(entry);
+      this.clearForm();
+    },
+
+    clearForm() {
+      this.$refs.form.reset();
+    },
+  },
 };
 </script>
 
