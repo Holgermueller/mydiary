@@ -60,12 +60,12 @@ export default {
   },
 
   computed: {
-    // user() {
-    //   return this.$store.getters.user;
-    // },
-    // error() {
-    //   return this.$store.getters.error;
-    // },
+    user() {
+      return this.$store.getters.user;
+    },
+    error() {
+      return this.$store.getters.error;
+    },
     loading() {
       return this.$store.getters.loading;
     },

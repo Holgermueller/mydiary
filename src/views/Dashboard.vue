@@ -14,10 +14,25 @@
             v-model="todaysThoughts"
           ></v-textarea>
         </v-form>
+
+        <v-layout row v-if="error">
+          <v-flex xs12 sm12 md12 lg12 xl12>
+            <app-alert
+              @dismissed="onDismissed"
+              :text="error.message || error"
+            ></app-alert>
+          </v-flex>
+        </v-layout>
       </v-card-text>
 
+      <v-divider></v-divider>
+
       <v-card-actions>
-        <v-btn @click.prevent="submitEntry">
+        <v-btn
+          @click.prevent="submitEntry"
+          :loading="loading"
+          :disabled="loading"
+        >
           Submit
         </v-btn>
       </v-card-actions>
@@ -38,6 +53,16 @@ export default {
 
   components: {},
 
+  computed: {
+    loading() {
+      return this.$store.getters.loading;
+    },
+
+    error() {
+      return this.$store.getters.error;
+    },
+  },
+
   methods: {
     submitEntry() {
       let entry = {
@@ -45,12 +70,21 @@ export default {
         todaysThoughts: this.todaysThoughts,
       };
 
+      this.$store.dispatch("addEntry", {
+        title: this.title,
+        todaysThoughts: this.todaysThoughts,
+      });
+
       console.log(entry);
       this.clearForm();
     },
 
     clearForm() {
       this.$refs.form.reset();
+    },
+
+    onDismissed() {
+      this.$store.dispatch("clearError");
     },
   },
 };
