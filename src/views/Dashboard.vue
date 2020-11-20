@@ -7,11 +7,17 @@
 
       <v-card-text>
         <v-form ref="form">
-          <v-text-field label="Title" v-model="title" outlined></v-text-field>
+          <v-text-field
+            label="Title"
+            v-model="title"
+            outlined
+            clearable
+          ></v-text-field>
 
           <v-textarea
             label="Today's thoughts:"
             v-model="todaysThoughts"
+            outlined
           ></v-textarea>
         </v-form>
 

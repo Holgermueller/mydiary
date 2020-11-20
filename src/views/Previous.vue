@@ -57,6 +57,11 @@ export default {
 </script>
 
 <style scoped>
+.progress {
+  width: 55%;
+  margin: 1% auto;
+}
+
 .previous-entries {
   width: 75%;
   margin: 10% auto;
