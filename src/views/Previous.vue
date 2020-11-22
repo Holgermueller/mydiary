@@ -27,6 +27,14 @@
           <v-expansion-panel-header>{{ entry.title }}</v-expansion-panel-header>
           <v-expansion-panel-content>
             {{ entry.todaysThoughts }}
+
+            <v-spacer></v-spacer>
+            <v-btn
+              :entryId="entry.entryId"
+              :to="'/SingleEntryPage/' + entry.entryId"
+            >
+              Read more ->
+            </v-btn>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>

@@ -61,5 +61,13 @@ export default {
     entries(state) {
       return state.entries;
     },
+
+    singleEntry(state) {
+      return (entryId) => {
+        return state.entries.find((entry) => {
+          return entry.entryId === entryId;
+        });
+      };
+    },
   },
 };
