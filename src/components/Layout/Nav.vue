@@ -9,16 +9,26 @@
           {{ link.title }}
         </v-btn>
       </div>
+
+      <v-spacer></v-spacer>
+
+      <SignOut />
     </v-app-bar>
   </div>
 </template>
 
 <script>
+import SignOut from "./SignOut";
+
 export default {
   name: "Nav",
 
   data() {
     return {};
+  },
+
+  components: {
+    SignOut,
   },
 
   computed: {
