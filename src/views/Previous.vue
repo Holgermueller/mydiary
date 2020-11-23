@@ -30,6 +30,7 @@
 
             <v-spacer></v-spacer>
             <v-btn
+              :entryDate="entry.entryDate"
               :entryId="entry.entryId"
               :to="'/SingleEntryPage/' + entry.entryId"
             >
@@ -43,6 +44,8 @@
 </template>
 
 <script>
+//import moment from 'moment'
+
 export default {
   name: "Previous",
 

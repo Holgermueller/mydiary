@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn>
+    <v-btn @click.prevent="signOut">
       Sign Out
     </v-btn>
   </div>
@@ -9,6 +9,12 @@
 <script>
 export default {
   name: "SignOut",
+
+  methods: {
+    signOut() {
+      console.log("click");
+    },
+  },
 };
 </script>
 

@@ -4,7 +4,7 @@
       <v-card-title>
         Title: {{ entry.title }}
         <v-spacer></v-spacer>
-        {{ entry.entryDate }}
+        {{ entryDate | formatEntryDate }}
       </v-card-title>
       <v-card-text class="entry-display">
         {{ entry.todaysThoughts }}
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   name: "SingleEntryPage",
 
@@ -27,11 +29,21 @@ export default {
     entryId: {
       type: String,
     },
+
+    entryDate: {
+      type: String,
+    },
   },
 
   computed: {
     entry() {
       return this.$store.getters.singleEntry(this.entryId);
+    },
+  },
+
+  filters: {
+    formatEntryDate(entryDate) {
+      return moment(entryDate).format("MMM Do, YYYY");
     },
   },
 };
