@@ -99,17 +99,27 @@ export default {
     },
   },
 
+  watch: {
+    user(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push("./dashboard");
+      }
+    },
+  },
+
   methods: {
     registerUser() {
-      //   this.$store.dispatch("registerUser", {
-      //     email: this.email,
-      //     password: this.password,
-      //     displayName: this.displayName,
-      //   });
+      this.$store.dispatch("registerUser", {
+        email: this.email,
+        password: this.password,
+        displayName: this.displayName,
+      });
     },
+
     clearFrom() {
       this.$refs.form.reset();
     },
+
     onDismissed() {
       this.$store.dispatch("clearError");
     },

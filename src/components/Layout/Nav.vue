@@ -12,7 +12,7 @@
 
       <v-spacer></v-spacer>
 
-      <SignOut />
+      <SignOut v-if="userIsAuthenticated" />
     </v-app-bar>
   </div>
 </template>
@@ -24,7 +24,9 @@ export default {
   name: "Nav",
 
   data() {
-    return {};
+    return {
+      userId: null,
+    };
   },
 
   components: {
@@ -32,6 +34,21 @@ export default {
   },
 
   computed: {
+    userName() {
+      return this.$store.getters.user.displayName;
+    },
+
+    loading() {
+      return this.$store.getters.loading;
+    },
+
+    userIsAuthenticated() {
+      return (
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
+      );
+    },
+
     menuLinks() {
       let menuLinks = [
         {
@@ -39,18 +56,28 @@ export default {
           title: "Home",
           link: "/",
         },
-        {
-          icon: "mdi-account",
-          title: "Dashboard",
-          link: "/dashboard",
-        },
-        {
-          icon: "mdi-notebook",
-          title: "Previous",
-          link: "/previous",
-        },
       ];
+      if (this.userIsAuthenticated) {
+        menuLinks = [
+          {
+            icon: "mdi-account",
+            title: "Dashboard",
+            link: "/dashboard",
+          },
+          {
+            icon: "mdi-notebook",
+            title: "Previous",
+            link: "/previous",
+          },
+        ];
+      }
       return menuLinks;
+    },
+  },
+
+  watch: {
+    user(value) {
+      return value;
     },
   },
 };

@@ -71,6 +71,14 @@ export default {
     },
   },
 
+  watch: {
+    user(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push("./dashboard");
+      }
+    },
+  },
+
   methods: {
     loginUser() {
       this.$store.dispatch("login", {
@@ -84,6 +92,10 @@ export default {
 
     clearForm() {
       this.$refs.form.reset();
+    },
+
+    onDismissed() {
+      this.$store.dispatch("clearError");
     },
   },
 };

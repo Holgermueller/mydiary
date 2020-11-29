@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn @click.prevent="signOut">
+    <v-btn @click.prevent="signOut" :loading="loading" :disabled="loading">
       Sign Out
     </v-btn>
   </div>
@@ -10,9 +10,16 @@
 export default {
   name: "SignOut",
 
+  computed: {
+    loading() {
+      return this.$store.getters.loading;
+    },
+  },
+
   methods: {
     signOut() {
-      console.log("click");
+      this.$store.dispatch("logout");
+      this.$router.go({ path: this.$router.path });
     },
   },
 };
