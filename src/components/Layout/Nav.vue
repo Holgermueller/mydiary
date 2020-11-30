@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
-    <v-app-bar fixed dense>
+    <v-app-bar fixed dense color="#DEB887">
       <div v-for="link in menuLinks" :key="link.title" link>
-        <v-btn :to="link.link">
+        <v-btn :to="link.link" elevation="0" color="#DEB887">
           <v-icon left>
             {{ link.icon }}
           </v-icon>

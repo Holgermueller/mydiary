@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-btn @click.prevent="signOut" :loading="loading" :disabled="loading">
+    <v-btn
+      @click.prevent="signOut"
+      :loading="loading"
+      :disabled="loading"
+      elevation="0"
+      color="#DEB887"
+    >
       Sign Out
     </v-btn>
   </div>
