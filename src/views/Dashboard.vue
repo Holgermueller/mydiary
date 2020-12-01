@@ -29,13 +29,19 @@
             ></app-alert>
           </v-flex>
         </v-layout>
+
+        <v-layout row v-if="domError">
+          <v-flex xs12 sm12 md12 lg12 xl12>
+            <app-alert @dismissed="onDismissed" :text="domError"></app-alert>
+          </v-flex>
+        </v-layout>
       </v-card-text>
 
       <v-divider></v-divider>
 
       <v-card-actions>
         <v-btn
-          @click.prevent="submitEntry"
+          @click.prevent="checkForm"
           :loading="loading"
           :disabled="loading"
         >
@@ -54,6 +60,7 @@ export default {
     return {
       title: "",
       todaysThoughts: "",
+      domError: "",
     };
   },
 
@@ -83,6 +90,14 @@ export default {
 
       console.log(entry);
       this.clearForm();
+    },
+
+    checkForm() {
+      if (!this.title || !this.todaysThoughts) {
+        this.domError = "Please fill in both fields.";
+      } else {
+        this.submitEntry();
+      }
     },
 
     clearForm() {
