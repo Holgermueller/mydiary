@@ -78,17 +78,11 @@ export default {
 
   methods: {
     submitEntry() {
-      let entry = {
-        title: this.title,
-        todaysThoughts: this.todaysThoughts,
-      };
-
       this.$store.dispatch("addEntry", {
         title: this.title,
         todaysThoughts: this.todaysThoughts,
       });
 
-      console.log(entry);
       this.clearForm();
     },
 

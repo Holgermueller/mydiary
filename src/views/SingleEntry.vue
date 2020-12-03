@@ -43,7 +43,7 @@ export default {
 
   filters: {
     formatEntryDate(entryDate) {
-      return moment(entryDate).format("MMM Do, YYYY");
+      return moment(entryDate).format("Do MMMM YYYY");
     },
   },
 };
