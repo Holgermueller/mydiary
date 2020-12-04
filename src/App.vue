@@ -25,3 +25,12 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+main {
+  background-image: url("./assets/notepad.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>

@@ -24,7 +24,11 @@
     <v-card class="previous-entries">
       <v-expansion-panels>
         <v-expansion-panel v-for="(entry, index) in getEntries" :key="index">
-          <v-expansion-panel-header>{{ entry.title }}</v-expansion-panel-header>
+          <v-expansion-panel-header
+            >{{ entry.title }}
+            <v-spacer></v-spacer>
+            {{ entry.entryDate }}
+          </v-expansion-panel-header>
           <v-expansion-panel-content>
             {{ entry.todaysThoughts }}
 
@@ -44,6 +48,8 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   name: "Previous",
 
@@ -60,6 +66,12 @@ export default {
     },
     loading() {
       return this.$store.getters.loading;
+    },
+  },
+
+  filters: {
+    getMonthForDisplay() {
+      return moment().format("MMMM YYYY");
     },
   },
 };
