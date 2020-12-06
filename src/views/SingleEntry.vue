@@ -4,7 +4,7 @@
       <v-card-title>
         Title: {{ entry.title }}
         <v-spacer></v-spacer>
-        {{ entryDate | formatEntryDate }}
+        {{ entry.entryDate.toDate() }}
       </v-card-title>
       <v-card-text class="entry-display">
         {{ entry.todaysThoughts }}
