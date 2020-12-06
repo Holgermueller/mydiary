@@ -26,7 +26,7 @@
         <v-expansion-panel-header
           >{{ entry.title }}
           <v-spacer></v-spacer>
-          {{ entry.entryDate.toDate() }}
+          {{ entry.entryDate.toDate() | getMonthForDisplay }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           {{ entry.todaysThoughts }}
@@ -51,6 +51,12 @@ import moment from "moment";
 export default {
   name: "Previous",
 
+  data() {
+    return {
+      timeToFormat: "",
+    };
+  },
+
   created() {
     return this.$store.dispatch("getAllEntries");
   },
@@ -68,8 +74,8 @@ export default {
   },
 
   filters: {
-    getMonthForDisplay() {
-      return moment().format("MMMM YYYY");
+    getMonthForDisplay(value) {
+      return moment(value).format("MMMM");
     },
   },
 };

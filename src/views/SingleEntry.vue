@@ -4,7 +4,7 @@
       <v-card-title>
         Title: {{ entry.title }}
         <v-spacer></v-spacer>
-        {{ entry.entryDate.toDate() }}
+        {{ entry.entryDate.toDate() | formatEntryDate }}
       </v-card-title>
       <v-card-text class="entry-display">
         {{ entry.todaysThoughts }}
@@ -42,8 +42,8 @@ export default {
   },
 
   filters: {
-    formatEntryDate(entryDate) {
-      return moment(entryDate).format("Do MMMM YYYY");
+    formatEntryDate(value) {
+      return moment(value).format("Do MMMM YYYY");
     },
   },
 };
