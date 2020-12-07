@@ -1,6 +1,6 @@
 <template>
   <div id="previous">
-    <v-layout row v-if="error">
+    <v-layout class="error" row v-if="error">
       <v-flex xs12 sm12 md12 lg12 xl12>
         <app-alert
           @dismissed="onDismissed"
@@ -90,5 +90,9 @@ export default {
 .previous-entries {
   width: 75%;
   margin: 10% auto;
+}
+
+.error {
+  margin-top: 14%;
 }
 </style>

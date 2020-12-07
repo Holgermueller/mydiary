@@ -12,12 +12,13 @@ export default {
   },
 
   actions: {
-    getAllEntries({ commit }) {
+    getAllEntries({ commit, getters }) {
       commit("SET_LOADING", true);
 
       firebase
         .collection("diaryEntries")
         .orderBy("entryDate", "desc")
+        .where("entryUserId", "==", getters.user.userId)
         .onSnapshot(
           (querySnapshot) => {
             let entriesFromDB = [];
@@ -27,6 +28,7 @@ export default {
                 entryDate: doc.data().entryDate,
                 title: doc.data().title,
                 todaysThoughts: doc.data().todaysThoughts,
+                entryUserId: doc.data().entryUserId,
               };
               entriesFromDB.push(entryData);
             });
@@ -40,7 +42,7 @@ export default {
         );
     },
 
-    addEntry({ commit }, payload) {
+    addEntry({ commit, getters }, payload) {
       commit("SET_LOADING", true);
 
       firebase
@@ -49,6 +51,7 @@ export default {
           title: payload.title,
           todaysThoughts: payload.todaysThoughts,
           entryDate: new Date(),
+          entryUserId: getters.user.userId,
         })
         .then(() => {
           commit("SET_LOADING", false);
