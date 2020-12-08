@@ -29,7 +29,7 @@
           {{ entry.entryDate.toDate() | getMonthForDisplay }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          {{ entry.todaysThoughts }}
+          {{ entry.todaysThoughts.substring(0, 8) + "..." }}
 
           <v-spacer></v-spacer>
           <v-btn
