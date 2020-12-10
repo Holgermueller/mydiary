@@ -34,7 +34,9 @@
             Cancel</v-btn
           >
           <v-spacer></v-spacer>
-          <v-btn @click.prevent="setTime">Submit</v-btn>
+          <v-btn @click.prevent="setTime" :loading="loading" :disabled="loading"
+            >Submit</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -52,9 +54,21 @@ export default {
     };
   },
 
+  computed: {
+    loading() {
+      return this.$store.getters.loading;
+    },
+
+    error() {
+      return this.$store.getters.error;
+    },
+  },
+
   methods: {
     setTime() {
-      console.log(this.reminderTime);
+      this.$store.dispatch("addReminderTime", {
+        reminderTime: this.reminderTime,
+      });
     },
 
     closeDialog() {

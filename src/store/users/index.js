@@ -14,6 +14,10 @@ export default {
     UPDATE_USERNAME(state, payload) {
       state.user = payload;
     },
+
+    ADD_REMINDER_TIME(state, payload) {
+      state.user = payload;
+    },
   },
 
   actions: {
@@ -96,6 +100,23 @@ export default {
         email: payload.email,
         displayName: payload.displayName,
       });
+    },
+
+    addReminderTime({ commit }, payload) {
+      commit("SET_LOADING", true);
+      commit("CLEAR_ERROR");
+
+      db.collection("userProfiles")
+        .add({
+          reminderTime: payload.reminderTime,
+        })
+        .then(() => {
+          commit("SET_LOADING", false);
+        })
+        .catch((err) => {
+          commit("SET_LOADING", true);
+          commit("SET_ERROR", err);
+        });
     },
 
     logout({ commit }) {
