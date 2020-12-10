@@ -7,6 +7,7 @@
       elevation="0"
       color="#DEB887"
     >
+      <v-icon left>mdi-logout</v-icon>
       Sign Out
     </v-btn>
   </div>

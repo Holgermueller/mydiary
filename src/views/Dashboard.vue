@@ -2,6 +2,7 @@
   <div>
     <v-card class="compose-card">
       <v-card-title>
+        <v-icon left>mdi-lead-pencil</v-icon>
         Write something here:
       </v-card-title>
 
@@ -46,6 +47,7 @@
           :disabled="loading"
         >
           Submit
+          <v-icon right>mdi-upload</v-icon>
         </v-btn>
       </v-card-actions>
     </v-card>

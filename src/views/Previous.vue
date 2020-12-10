@@ -37,7 +37,8 @@
             :entryId="entry.entryId"
             :to="'/SingleEntryPage/' + entry.entryId"
           >
-            Read more ->
+            Read more
+            <v-icon right>mdi-arrow-right-bold</v-icon>
           </v-btn>
         </v-expansion-panel-content>
       </v-expansion-panel>

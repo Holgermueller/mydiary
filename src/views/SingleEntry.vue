@@ -12,6 +12,7 @@
       <v-divider></v-divider>
       <v-card-actions>
         <v-btn to="/previous">
+          <v-icon left>mdi-arrow-left-bold</v-icon>
           Back
         </v-btn>
       </v-card-actions>
