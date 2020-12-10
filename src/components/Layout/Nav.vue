@@ -10,6 +10,8 @@
         </v-btn>
       </div>
 
+      <TimePicker v-if="userIsAuthenticated" />
+
       <v-spacer></v-spacer>
 
       <SignOut v-if="userIsAuthenticated" />
@@ -19,6 +21,7 @@
 
 <script>
 import SignOut from "./SignOut";
+import TimePicker from "../DashComponents/TimePicker";
 
 export default {
   name: "Nav",
@@ -31,6 +34,7 @@ export default {
 
   components: {
     SignOut,
+    TimePicker,
   },
 
   computed: {

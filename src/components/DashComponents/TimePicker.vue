@@ -1,0 +1,67 @@
+<template>
+  <div class="text-center">
+    <v-dialog v-model="dialog" width="500">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn elevation="0" color="#DEB887" v-bind="attrs" v-on="on">
+          <v-icon left>mdi-clock-outline</v-icon>
+          Set reminder
+        </v-btn>
+      </template>
+
+      <v-card>
+        <v-card-title>
+          Set a time:
+        </v-card-title>
+
+        <v-card-text>
+          <h4>
+            Set the latest time you want to be reminded to write in your
+            journal.
+          </h4>
+
+          <v-time-picker
+            landscape
+            v-model="reminderTime"
+            ampm-in-title
+          ></v-time-picker>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-btn @click="closeDialog">
+            <v-icon left>
+              mdi-cancel
+            </v-icon>
+            Cancel</v-btn
+          >
+          <v-spacer></v-spacer>
+          <v-btn @click.prevent="setTime">Submit</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "TimePicker",
+
+  data() {
+    return {
+      dialog: false,
+      reminderTime: "",
+    };
+  },
+
+  methods: {
+    setTime() {
+      console.log(this.reminderTime);
+    },
+
+    closeDialog() {
+      this.dialog = false;
+    },
+  },
+};
+</script>
+
+<style scoped></style>
