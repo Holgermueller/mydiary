@@ -13,6 +13,10 @@
           Set a time:
         </v-card-title>
 
+        <v-card-subtitle>
+          {{ uid }}
+        </v-card-subtitle>
+
         <v-card-text>
           <h4>
             Set the latest time you want to be reminded to write in your
@@ -24,6 +28,15 @@
             v-model="reminderTime"
             ampm-in-title
           ></v-time-picker>
+
+          <v-layout row v-if="error">
+            <v-flex xs12 sm12 md12 lg12 xl12>
+              <app-alert
+                @dismissed="onDismissed"
+                :text="error.message || error"
+              ></app-alert>
+            </v-flex>
+          </v-layout>
         </v-card-text>
 
         <v-card-actions>
@@ -62,17 +75,26 @@ export default {
     error() {
       return this.$store.getters.error;
     },
+
+    uid() {
+      return this.$store.getters.user.uid;
+    },
   },
 
   methods: {
     setTime() {
       this.$store.dispatch("addReminderTime", {
+        userId: this.uid,
         reminderTime: this.reminderTime,
       });
     },
 
     closeDialog() {
       this.dialog = false;
+    },
+
+    onDismissed() {
+      this.$store.dispatch("clearError");
     },
   },
 };

@@ -16,7 +16,12 @@ export default {
     },
 
     ADD_REMINDER_TIME(state, payload) {
-      state.user = payload;
+      const userToEdit = state.user.find((thisUser) => {
+        return thisUser.uid === payload.uid;
+      });
+      if (payload.user) {
+        userToEdit.reminderTime = payload.reminderTime;
+      }
     },
   },
 
@@ -46,7 +51,7 @@ export default {
           const newUser = {
             displayName: payload.displayName,
             email: user.email,
-            userId: user.uid,
+            uid: user.uid,
           };
 
           commit("SET_USER", newUser);
@@ -81,7 +86,7 @@ export default {
         .then((user) => {
           const signedInUser = {
             email: user.user.email,
-            id: user.user.id,
+            uid: user.user.id,
             displayName: user.user.displayName,
           };
           commit("SET_LOADING", false);
@@ -96,7 +101,7 @@ export default {
     autoSignIn({ commit }, payload) {
       commit("SET_LOADING", false);
       commit("SET_USER", {
-        userId: payload.uid,
+        uid: payload.uid,
         email: payload.email,
         displayName: payload.displayName,
       });
@@ -107,11 +112,13 @@ export default {
       commit("CLEAR_ERROR");
 
       db.collection("userProfiles")
-        .add({
+        .doc(payload.uid)
+        .update({
           reminderTime: payload.reminderTime,
         })
         .then(() => {
           commit("SET_LOADING", false);
+          commit(" ADD_REMINDER_TIME", payload);
         })
         .catch((err) => {
           commit("SET_LOADING", true);
