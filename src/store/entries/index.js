@@ -18,7 +18,7 @@ export default {
       firebase
         .collection("diaryEntries")
         .orderBy("entryDate", "desc")
-        .where("entryUserId", "==", getters.user.userId)
+        .where("entryUserId", "==", getters.user.uid)
         .onSnapshot(
           (querySnapshot) => {
             let entriesFromDB = [];

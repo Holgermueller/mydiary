@@ -4,11 +4,16 @@ import db from "../../firebase/fbInit";
 export default {
   state: {
     user: null,
+    userDocId: null,
   },
 
   mutations: {
     SET_USER(state, payload) {
       state.user = payload;
+    },
+
+    SET_USER_DOC_ID(state, payload) {
+      state.userDocId = payload;
     },
 
     UPDATE_USERNAME(state, payload) {
@@ -107,13 +112,32 @@ export default {
       });
     },
 
+    getUserDocId({ commit, getters }) {
+      commit("SET_LOADING", true);
+
+      db.collection("userProfiles")
+        .where("uid", "==", getters.user.uid)
+        .get()
+        .then((doc) => {
+          let userIdFromDb = {
+            userDocId: doc.id,
+          };
+          commit("SET_USER_DOC_ID", userIdFromDb);
+          commit("SET_LOADING", false);
+        })
+        .catch((err) => {
+          commit("SET_LOADING", true);
+          commit("SET_ERROR", err);
+        });
+    },
+
     addReminderTime({ commit }, payload) {
       commit("SET_LOADING", true);
       commit("CLEAR_ERROR");
 
       db.collection("userProfiles")
-        .doc(payload.uid)
-        .update({
+        .doc(payload.userDocId)
+        .add({
           reminderTime: payload.reminderTime,
         })
         .then(() => {
@@ -145,6 +169,10 @@ export default {
   getters: {
     user(state) {
       return state.user;
+    },
+
+    userDocId(state) {
+      return state.userDocId;
     },
   },
 };

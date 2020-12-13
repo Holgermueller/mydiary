@@ -13,9 +13,7 @@
           Set a time:
         </v-card-title>
 
-        <v-card-subtitle>
-          {{ uid }}
-        </v-card-subtitle>
+        <v-card-subtitle> {{ userDocId }} </v-card-subtitle>
 
         <v-card-text>
           <h4>
@@ -67,6 +65,10 @@ export default {
     };
   },
 
+  created() {
+    return this.$store.dispatch("getUserDocId");
+  },
+
   computed: {
     loading() {
       return this.$store.getters.loading;
@@ -76,15 +78,15 @@ export default {
       return this.$store.getters.error;
     },
 
-    uid() {
-      return this.$store.getters.user.uid;
+    userDocId() {
+      return this.$store.getters.userDocId;
     },
   },
 
   methods: {
     setTime() {
       this.$store.dispatch("addReminderTime", {
-        userId: this.uid,
+        userDocId: this.userDocId.id,
         reminderTime: this.reminderTime,
       });
     },
