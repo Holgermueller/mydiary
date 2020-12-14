@@ -45,8 +45,15 @@
             Cancel</v-btn
           >
           <v-spacer></v-spacer>
-          <v-btn @click.prevent="setTime" :loading="loading" :disabled="loading"
-            >Submit</v-btn
+          <v-btn
+            @click.prevent="setTime"
+            :loading="loading"
+            :disabled="loading"
+          >
+            <v-icon left>
+              mdi-check
+            </v-icon>
+            Submit</v-btn
           >
         </v-card-actions>
       </v-card>
