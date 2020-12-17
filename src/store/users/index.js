@@ -113,17 +113,21 @@ export default {
     },
 
     getUserDocId({ commit, getters }) {
-      commit("SET_LOADING", true);
+      //commit("SET_LOADING", true);
 
       db.collection("userProfiles")
         .where("uid", "==", getters.user.uid)
         .get()
-        .then((doc) => {
-          let userIdFromDb = {
-            userDocId: doc.id,
-          };
-          commit("SET_USER_DOC_ID", userIdFromDb);
-          commit("SET_LOADING", false);
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            console.log(doc.id);
+          });
+
+          // let userIdFromDb = {
+          //   userDocId: doc.id,
+          // };
+          // commit("SET_USER_DOC_ID", userIdFromDb);
+          // commit("SET_LOADING", false);
         })
         .catch((err) => {
           commit("SET_LOADING", true);
