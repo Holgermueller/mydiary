@@ -13,8 +13,6 @@
           Set a time:
         </v-card-title>
 
-        <v-card-subtitle> {{ userDocId.userDocId }} </v-card-subtitle>
-
         <v-card-text>
           <h4>
             Set the latest time you want to be reminded to write in your

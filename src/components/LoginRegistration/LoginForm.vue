@@ -26,7 +26,7 @@
     <v-divider></v-divider>
 
     <v-card-actions>
-      <v-btn color="red" @click.prevent="clearLoginForm" dark>
+      <v-btn color="red" @click.prevent="clearForm" dark>
         <v-icon left>mdi-close-circle</v-icon>
         cancel
       </v-btn>
