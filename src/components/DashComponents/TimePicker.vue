@@ -13,7 +13,7 @@
           Set a time:
         </v-card-title>
 
-        <v-card-subtitle> {{ userDocId }} </v-card-subtitle>
+        <v-card-subtitle> {{ userDocId.userDocId }} </v-card-subtitle>
 
         <v-card-text>
           <h4>
@@ -93,7 +93,7 @@ export default {
   methods: {
     setTime() {
       this.$store.dispatch("addReminderTime", {
-        userDocId: this.userDocId.id,
+        userDocId: this.userDocId.userDocId,
         reminderTime: this.reminderTime,
       });
     },

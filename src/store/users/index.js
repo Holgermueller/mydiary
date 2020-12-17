@@ -113,21 +113,19 @@ export default {
     },
 
     getUserDocId({ commit, getters }) {
-      //commit("SET_LOADING", true);
+      commit("SET_LOADING", true);
 
       db.collection("userProfiles")
         .where("uid", "==", getters.user.uid)
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            console.log(doc.id);
+            let userIdFromDb = {
+              userDocId: doc.id,
+            };
+            commit("SET_USER_DOC_ID", userIdFromDb);
+            commit("SET_LOADING", false);
           });
-
-          // let userIdFromDb = {
-          //   userDocId: doc.id,
-          // };
-          // commit("SET_USER_DOC_ID", userIdFromDb);
-          // commit("SET_LOADING", false);
         })
         .catch((err) => {
           commit("SET_LOADING", true);
@@ -141,12 +139,12 @@ export default {
 
       db.collection("userProfiles")
         .doc(payload.userDocId)
-        .add({
+        .update({
           reminderTime: payload.reminderTime,
         })
         .then(() => {
+          commit("ADD_REMINDER_TIME", payload);
           commit("SET_LOADING", false);
-          commit(" ADD_REMINDER_TIME", payload);
         })
         .catch((err) => {
           commit("SET_LOADING", true);
