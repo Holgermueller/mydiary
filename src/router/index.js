@@ -5,6 +5,7 @@ import Home from "../views/index";
 import Dashboard from "../views/Dashboard";
 import Previous from "../views/Previous";
 import SingleEntryPage from "../views/SingleEntry";
+import Settings from "../views/Settings";
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,15 @@ let router = new VueRouter({
       path: "/SingleEntryPage/:entryId",
       name: "SingleEntryPage",
       component: SingleEntryPage,
+      props: true,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/Settings",
+      name: "Settings",
+      component: Settings,
       props: true,
       meta: {
         requiresAuth: true,

@@ -69,6 +69,11 @@ export default {
             link: "/dashboard",
           },
           {
+            icon: "mdi-account",
+            title: "Settings",
+            link: "/settings",
+          },
+          {
             icon: "mdi-notebook",
             title: "Previous",
             link: "/previous",
