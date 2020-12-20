@@ -6,17 +6,38 @@
       </v-card-title>
 
       <v-card-text>
-        <v-expansion-panels>
+        <v-expansion-panels inset>
           <v-expansion-panel>
             <v-expansion-panel-header>
+              Change Username:
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
               {{ user.displayName }}
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+
+          <v-expansion-panel>
+            <v-expansion-panel-header>
+              Change Email:
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              {{ user.email }}
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+
+          <v-expansion-panel>
+            <v-expansion-panel-header>
+              Change password:
             </v-expansion-panel-header>
           </v-expansion-panel>
 
           <v-expansion-panel>
             <v-expansion-panel-header>
-              {{ user.email }}
+              Delete Account:
             </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <DeleteAcct />
+            </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
       </v-card-text>
@@ -25,8 +46,14 @@
 </template>
 
 <script>
+import DeleteAcct from "../components/SettingsComponents/DeleteAcct";
+
 export default {
   name: "Settings",
+
+  components: {
+    DeleteAcct,
+  },
 
   created() {
     return this.$store.getters.user;

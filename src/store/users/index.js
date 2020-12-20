@@ -160,10 +160,27 @@ export default {
         .signOut()
         .then(() => {
           commit("SET_USER", null);
-          commit("SET_LOADING", false).catch((err) => {
-            commit("SET_LOADING", true);
-            commit("SET_ERROR", err);
-          });
+          commit("SET_LOADING", false);
+        })
+        .catch((err) => {
+          commit("SET_LOADING", true);
+          commit("SET_ERROR", err);
+        });
+    },
+
+    deleteUser({ commit }) {
+      commit("SET_LOADING", true);
+
+      firebase
+        .auth()
+        .currentUser.delete()
+        .then(() => {
+          commit("SET_USER", null);
+          commit("SET_LOADING", false);
+        })
+        .catch((err) => {
+          commit("SET_LOADING", true);
+          commit("SET_ERROR", err);
         });
     },
   },
