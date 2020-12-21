@@ -2,7 +2,8 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" block>
+        <v-btn v-bind="attrs" v-on="on" color="red" dark block>
+          <v-icon left>mdi-delete</v-icon>
           Delete Account
         </v-btn>
       </template>
@@ -17,7 +18,7 @@
         </v-card-subtitle>
 
         <v-card-text>
-          <h5>This action cannot be reversed.</h5>
+          <h5>This action cannot be reversed!</h5>
 
           <v-layout row v-if="error">
             <v-flex xs12 sm12 md12 lg12 xl12>
@@ -31,13 +32,20 @@
 
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn @click.prevent="closeDialog">No</v-btn>
+          <v-btn @click.prevent="closeDialog" color="red" dark>
+            <v-icon left>mdi-cancel</v-icon>
+            No</v-btn
+          >
           <v-spacer></v-spacer>
           <v-btn
             @click.prevent="deleteUser"
             :loading="loading"
             :disabled="loading"
-            >Yes</v-btn
+            color="teal"
+            dark
+          >
+            <v-icon left>mdi-check</v-icon>
+            Yes</v-btn
           >
         </v-card-actions>
       </v-card>

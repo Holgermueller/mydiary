@@ -12,6 +12,11 @@
               Change Username:
             </v-expansion-panel-header>
             <v-expansion-panel-content>
+              <v-text-field outlined> </v-text-field>
+              <v-btn dark>
+                <v-icon left>mdi-check</v-icon>
+                Submit</v-btn
+              >
               {{ user.displayName }}
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -21,6 +26,11 @@
               Change Email:
             </v-expansion-panel-header>
             <v-expansion-panel-content>
+              <v-text-field outlined></v-text-field>
+              <v-btn dark>
+                <v-icon left>mdi-check</v-icon>
+                Submit</v-btn
+              >
               {{ user.email }}
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -29,6 +39,14 @@
             <v-expansion-panel-header>
               Change password:
             </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-text-field outlined></v-text-field>
+              <v-btn dark>
+                <v-icon left>mdi-check</v-icon>
+                Submit</v-btn
+              >
+              {{ user.password }}
+            </v-expansion-panel-content>
           </v-expansion-panel>
 
           <v-expansion-panel>
