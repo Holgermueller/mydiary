@@ -12,12 +12,17 @@
               Change Username:
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <v-text-field outlined> </v-text-field>
+              <v-text-field
+                v-model="editedUsername"
+                :placeholder="user.displayName"
+                outlined
+                clearable
+              >
+              </v-text-field>
               <v-btn dark>
                 <v-icon left>mdi-check</v-icon>
                 Submit</v-btn
               >
-              {{ user.displayName }}
             </v-expansion-panel-content>
           </v-expansion-panel>
 
@@ -26,12 +31,16 @@
               Change Email:
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <v-text-field outlined></v-text-field>
+              <v-text-field
+                v-model="editedEmail"
+                :placeholder="user.email"
+                outlined
+                clearable
+              ></v-text-field>
               <v-btn dark>
                 <v-icon left>mdi-check</v-icon>
                 Submit</v-btn
               >
-              {{ user.email }}
             </v-expansion-panel-content>
           </v-expansion-panel>
 
@@ -40,12 +49,22 @@
               Change password:
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <v-text-field outlined></v-text-field>
+              <v-text-field
+                v-model="editedPassword"
+                :placeholder="user.password"
+                outlined
+                clearable
+              ></v-text-field>
+              <v-text-field
+                v-model="confirmEditedPassword"
+                placeholder="Confirm Edited Password"
+                outlined
+                clearable
+              ></v-text-field>
               <v-btn dark>
                 <v-icon left>mdi-check</v-icon>
                 Submit</v-btn
               >
-              {{ user.password }}
             </v-expansion-panel-content>
           </v-expansion-panel>
 
@@ -68,6 +87,15 @@ import DeleteAcct from "../components/SettingsComponents/DeleteAcct";
 
 export default {
   name: "Settings",
+
+  data() {
+    return {
+      editedUsername: "",
+      editedEmail: "",
+      editedPassword: "",
+      confirmEditedPassword: "",
+    };
+  },
 
   components: {
     DeleteAcct,
