@@ -73,7 +73,7 @@
               Delete Account:
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <DeleteAcct />
+              <ReAuth />
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import DeleteAcct from "../components/SettingsComponents/DeleteAcct";
+import ReAuth from "../components/SettingsComponents/ReAuth";
 
 export default {
   name: "Settings",
@@ -98,7 +98,7 @@ export default {
   },
 
   components: {
-    DeleteAcct,
+    ReAuth,
   },
 
   created() {
