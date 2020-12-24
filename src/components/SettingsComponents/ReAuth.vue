@@ -24,9 +24,21 @@
           </v-layout>
 
           <v-form ref="form">
-            <v-text-field label="Enter email" outlined></v-text-field>
-            <v-text-field label="Enter password" outlined></v-text-field>
-            <v-text-field label="Confirm password" outlined></v-text-field>
+            <v-text-field
+              v-model="email"
+              label="Enter email"
+              outlined
+            ></v-text-field>
+            <v-text-field
+              v-model="password"
+              label="Enter password"
+              outlined
+            ></v-text-field>
+            <v-text-field
+              v-model="confirmPassword"
+              label="Confirm password"
+              outlined
+            ></v-text-field>
           </v-form>
         </v-card-text>
 
@@ -70,6 +82,9 @@ export default {
   data() {
     return {
       dialog: false,
+      email: "",
+      password: "",
+      confirmPassword: "",
     };
   },
 
