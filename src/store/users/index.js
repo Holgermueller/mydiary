@@ -168,19 +168,19 @@ export default {
         });
     },
 
-    reAuthUser({ commit }, payload) {
-      commit("SET_LOADING", true);
+    // reAuthUser({ commit }, payload) {
+    //   commit("SET_LOADING", true);
 
-      firebase.auth.currentUser
-        .reauthenticateWithCredential()
-        .then(() => {
-          //some stuff
-        })
-        .catch((err) => {
-          commit("SET_LOADING", true);
-          commit("SET_ERROR", err);
-        });
-    },
+    //   firebase.auth.currentUser
+    //     .reauthenticateWithCredential()
+    //     .then(() => {
+    //       //some stuff
+    //     })
+    //     .catch((err) => {
+    //       commit("SET_LOADING", true);
+    //       commit("SET_ERROR", err);
+    //     });
+    // },
 
     deleteUser({ commit }) {
       commit("SET_LOADING", true);

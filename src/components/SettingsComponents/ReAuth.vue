@@ -90,7 +90,16 @@ export default {
 
   methods: {
     reAuth() {
-      console.log("click");
+      let reauthData = {
+        email: this.email,
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+      };
+
+      console.log(reauthData);
+
+      this.$refs.form.reset();
+      this.closeDialog();
     },
 
     closeDialog() {
