@@ -99,6 +99,8 @@ export default {
       console.log(reauthData);
 
       this.$refs.form.reset();
+      this.$router.push("/DeleteAcct");
+
       this.closeDialog();
     },
 

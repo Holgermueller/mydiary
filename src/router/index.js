@@ -6,6 +6,7 @@ import Dashboard from "../views/Dashboard";
 import Previous from "../views/Previous";
 import SingleEntryPage from "../views/SingleEntry";
 import Settings from "../views/Settings";
+import DeleteAcct from "../views/DeleteAcct";
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,15 @@ let router = new VueRouter({
       path: "/Settings",
       name: "Settings",
       component: Settings,
+      props: true,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/DeleteAcct",
+      name: "DeleteAcct",
+      component: DeleteAcct,
       props: true,
       meta: {
         requiresAuth: true,
