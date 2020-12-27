@@ -7,6 +7,7 @@ import Previous from "../views/Previous";
 import SingleEntryPage from "../views/SingleEntry";
 import Settings from "../views/Settings";
 import DeleteAcct from "../views/DeleteAcct";
+import GoodBye from "../views/GoodBye";
 
 Vue.use(VueRouter);
 
@@ -59,6 +60,11 @@ let router = new VueRouter({
       meta: {
         requiresAuth: true,
       },
+    },
+    {
+      path: "/goodbye",
+      name: "GoodBye",
+      component: GoodBye,
     },
   ],
 });
