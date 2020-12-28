@@ -19,7 +19,7 @@
                 clearable
               >
               </v-text-field>
-              <v-btn dark>
+              <v-btn color="blue" dark>
                 <v-icon left>mdi-check</v-icon>
                 Submit</v-btn
               >
@@ -37,7 +37,7 @@
                 outlined
                 clearable
               ></v-text-field>
-              <v-btn dark>
+              <v-btn color="blue" dark>
                 <v-icon left>mdi-check</v-icon>
                 Submit</v-btn
               >
@@ -61,7 +61,7 @@
                 outlined
                 clearable
               ></v-text-field>
-              <v-btn dark>
+              <v-btn color="blue" dark>
                 <v-icon left>mdi-check</v-icon>
                 Submit</v-btn
               >

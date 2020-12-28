@@ -36,6 +36,9 @@
             :entryDate="entry.entryDate"
             :entryId="entry.entryId"
             :to="'/SingleEntryPage/' + entry.entryId"
+            color="teal"
+            dark
+            block
           >
             Read more
             <v-icon right>mdi-arrow-right-bold</v-icon>

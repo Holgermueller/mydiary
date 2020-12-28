@@ -45,6 +45,9 @@
           @click.prevent="checkForm"
           :loading="loading"
           :disabled="loading"
+          block
+          color="blue"
+          dark
         >
           Submit
           <v-icon right>mdi-upload</v-icon>

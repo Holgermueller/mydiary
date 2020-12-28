@@ -36,7 +36,7 @@
         </v-card-text>
 
         <v-card-actions>
-          <v-btn @click="closeDialog">
+          <v-btn @click="closeDialog" color="red" dark>
             <v-icon left>
               mdi-cancel
             </v-icon>
@@ -47,6 +47,8 @@
             @click.prevent="setTime"
             :loading="loading"
             :disabled="loading"
+            color="teal"
+            dark
           >
             <v-icon left>
               mdi-check
