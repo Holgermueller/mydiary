@@ -28,6 +28,17 @@ export default {
         userToEdit.reminderTime = payload.reminderTime;
       }
     },
+
+    UPDATE_USER_INFO(state, payload) {
+      const infoToEdit = state.user;
+
+      if (payload.username) {
+        infoToEdit.displayName = payload.username;
+      }
+      if (payload.email) {
+        infoToEdit.email = payload.email;
+      }
+    },
   },
 
   actions: {
@@ -160,6 +171,22 @@ export default {
         .signOut()
         .then(() => {
           commit("SET_USER", null);
+          commit("SET_LOADING", false);
+        })
+        .catch((err) => {
+          commit("SET_LOADING", true);
+          commit("SET_ERROR", err);
+        });
+    },
+
+    resetPassword({ commit, getters }) {
+      commit("SET_LOADING", true);
+
+      firebase
+        .auth()
+        .sendPasswordResetEmail(getters.user.email)
+        .then(() => {
+          console.log("email sent!");
           commit("SET_LOADING", false);
         })
         .catch((err) => {

@@ -49,22 +49,16 @@
               Change password:
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <v-text-field
-                v-model="editedPassword"
-                :placeholder="user.password"
-                outlined
-                clearable
-              ></v-text-field>
-              <v-text-field
-                v-model="confirmEditedPassword"
-                placeholder="Confirm Edited Password"
-                outlined
-                clearable
-              ></v-text-field>
-              <v-btn color="blue" dark>
-                <v-icon left>mdi-check</v-icon>
-                Submit</v-btn
+              <v-btn
+                @click.prevent="sendPasswordResetEmail"
+                color="blue"
+                block
+                dark
               >
+                <v-icon left>mdi-email-send-outline</v-icon>
+                Send email to reset password
+                <v-icon right>mdi-arrow-right</v-icon>
+              </v-btn>
             </v-expansion-panel-content>
           </v-expansion-panel>
 
@@ -108,6 +102,12 @@ export default {
   computed: {
     user() {
       return this.$store.getters.user;
+    },
+  },
+
+  methods: {
+    sendPasswordResetEmail() {
+      this.$store.dispatch("resetPassword");
     },
   },
 };
