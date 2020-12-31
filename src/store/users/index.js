@@ -195,19 +195,25 @@ export default {
         });
     },
 
-    // reAuthUser({ commit }, payload) {
-    //   commit("SET_LOADING", true);
+    reAuthUser({ commit }, payload) {
+      commit("SET_LOADING", true);
 
-    //   firebase.auth.currentUser
-    //     .reauthenticateWithCredential()
-    //     .then(() => {
-    //       //some stuff
-    //     })
-    //     .catch((err) => {
-    //       commit("SET_LOADING", true);
-    //       commit("SET_ERROR", err);
-    //     });
-    // },
+      let credentials = firebase.auth.EmailAuthProvider.credential(
+        payload.email,
+        payload.password
+      );
+
+      firebase
+        .auth()
+        .currentUser.reauthenticateWithCredential(credentials)
+        .then(() => {
+          console.log("user reauthed!!");
+        })
+        .catch((err) => {
+          commit("SET_LOADING", true);
+          commit("SET_ERROR", err);
+        });
+    },
 
     deleteUser({ commit }) {
       commit("SET_LOADING", true);

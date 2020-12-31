@@ -90,13 +90,10 @@ export default {
 
   methods: {
     reAuth() {
-      let reauthData = {
+      this.$store.dispatch("reAuthUser", {
         email: this.email,
         password: this.password,
-        confirmPassword: this.confirmPassword,
-      };
-
-      console.log(reauthData);
+      });
 
       this.$refs.form.reset();
       this.$router.push("/DeleteAcct");
