@@ -208,6 +208,7 @@ export default {
         .currentUser.reauthenticateWithCredential(credentials)
         .then(() => {
           console.log("user reauthed!!");
+          commit("SET_LOADING", false);
         })
         .catch((err) => {
           commit("SET_LOADING", true);
