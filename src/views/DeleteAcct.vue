@@ -61,8 +61,7 @@ export default {
 
   methods: {
     deleteUser() {
-      this.closeDialog();
-
+      this.$router.push("/goodbye");
       return this.$store.dispatch("deleteUser");
     },
 
