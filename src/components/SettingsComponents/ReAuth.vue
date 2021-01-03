@@ -10,15 +10,19 @@
 
       <v-card>
         <v-card-title>
-          Re Auth Before Delete
+          Please Reauthenticate Your Account Before You Delete It
         </v-card-title>
+
+        <v-card-subtitle>
+          We just want to make sure you're not doing this by mistake.
+        </v-card-subtitle>
 
         <v-card-text>
           <v-layout row v-if="error">
             <v-flex xs12 sm12 md12 lg12 xl12>
               <app-alert
                 @dismissed="onDismissed"
-                :text="error.message || error"
+                :text="error.message"
               ></app-alert>
             </v-flex>
           </v-layout>
@@ -53,7 +57,13 @@
           <v-btn
             @click.prevent="reAuth"
             :loading="loading"
-            :disabled="loading"
+            :disabled="
+              loading ||
+                validateEmail ||
+                validatePassword ||
+                validateConfirmPassword ||
+                confirmPasswordsMatch
+            "
             color="teal"
             dark
           >
@@ -74,8 +84,25 @@ export default {
     loading() {
       return this.$store.getters.loading;
     },
+
     error() {
       return this.$store.getters.error;
+    },
+
+    validateEmail() {
+      return this.email === "";
+    },
+
+    validatePassword() {
+      return this.password === "";
+    },
+
+    validateConfirmPassword() {
+      return this.confirmPassword === "";
+    },
+
+    confirmPasswordsMatch() {
+      return this.password === "";
     },
   },
 
@@ -108,6 +135,12 @@ export default {
 
     closeDialog() {
       this.dialog = false;
+
+      this.resetForm();
+    },
+
+    resetForm() {
+      this.$refs.form.reset();
     },
 
     onDismissed() {
