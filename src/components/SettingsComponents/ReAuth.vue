@@ -95,10 +95,11 @@ export default {
         password: this.password,
       });
 
-      this.$refs.form.reset();
-      this.$router.push("/DeleteAcct");
-
       this.closeDialog();
+
+      this.$refs.form.reset();
+
+      this.$router.push("/DeleteAcct");
     },
 
     closeDialog() {
