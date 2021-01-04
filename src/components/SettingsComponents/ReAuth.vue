@@ -37,11 +37,17 @@
               v-model="password"
               label="Enter password"
               outlined
+              :type="showPassword ? 'text' : 'password'"
+              :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="showPassword = !showPassword"
             ></v-text-field>
             <v-text-field
               v-model="confirmPassword"
               label="Confirm password"
               outlined
+              :type="showConfirmPassword ? 'text' : 'password'"
+              :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="showConfirmPassword = !showConfirmPassword"
             ></v-text-field>
           </v-form>
         </v-card-text>
@@ -112,6 +118,8 @@ export default {
       email: "",
       password: "",
       confirmPassword: "",
+      showPassword: false,
+      showConfirmPassword: false,
     };
   },
 
@@ -122,7 +130,7 @@ export default {
         password: this.password,
       });
 
-      if (!this.error.message) {
+      if (!this.error) {
         this.closeDialog();
 
         this.$refs.form.reset();
