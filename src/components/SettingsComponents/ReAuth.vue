@@ -129,16 +129,19 @@ export default {
         email: this.email,
         password: this.password,
       });
+      let res;
 
-      if (!this.error) {
-        this.closeDialog();
+      console.log(res);
 
-        this.$refs.form.reset();
+      // if (!this.error) {
+      //   this.closeDialog();
 
-        this.$router.push("/DeleteAcct");
-      } else {
-        console.log(this.error.message);
-      }
+      //   this.$refs.form.reset();
+
+      //   this.$router.push("/DeleteAcct");
+      // } else {
+      //   console.log(this.error.message);
+      // }
     },
 
     closeDialog() {

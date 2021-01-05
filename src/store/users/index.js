@@ -206,9 +206,10 @@ export default {
       firebase
         .auth()
         .currentUser.reauthenticateWithCredential(credentials)
-        .then(() => {
+        .then((doc) => {
           console.log("user reauthed!!");
           commit("SET_LOADING", false);
+          console.log(doc.data);
         })
         .catch((err) => {
           commit("SET_LOADING", true);
