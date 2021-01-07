@@ -1,5 +1,14 @@
 <template>
   <div>
+    <v-card class="username-display">
+      <v-card-title>
+        Hello, {{}}
+      </v-card-title>
+      <v-card-subtitle>
+        What's on your mind today?
+      </v-card-subtitle>
+    </v-card>
+
     <v-card class="compose-card">
       <v-card-title>
         <v-icon left>mdi-lead-pencil</v-icon>
@@ -111,8 +120,13 @@ export default {
 </script>
 
 <style scoped>
+.username-display {
+  width: 75%;
+  margin: 10% auto 5%;
+}
+
 .compose-card {
   width: 75%;
-  margin: 10% auto;
+  margin: auto;
 }
 </style>

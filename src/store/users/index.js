@@ -209,7 +209,7 @@ export default {
         .then((doc) => {
           console.log("user reauthed!!");
           commit("SET_LOADING", false);
-          console.log(doc.data);
+          console.log(doc);
         })
         .catch((err) => {
           commit("SET_LOADING", true);
